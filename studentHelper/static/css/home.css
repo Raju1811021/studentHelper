@@ -1,0 +1,95 @@
+*{
+    margin: 0px;
+}
+/*NAVIGATION bar */
+.NAVIGATION{
+    width: 100vw;
+    height: 100px;
+    background-color:lightblue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/*Logo*/
+.LOGO{
+    display: flex;
+    align-items: center;
+    font-size: 27px;
+    font-weight: bolder;
+}
+.BOOK{
+    font-size: 50px;
+    color: #055160;
+}
+.LOGIN_BUTTON{
+    margin-right: 20px;
+}
+.LOGIN a{
+    text-decoration: none;
+}
+/*Hero*/
+.HERO{
+    display: flex;
+    background-image: url('./../img/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.QUOTE{
+    width: 300px;
+    background-color: #f5f5f5;
+    height: 400px;
+    text-align: center;
+    padding: 30px;
+    padding-top: 110px;
+    color: blue;
+    font-weight: bolder;
+    border-radius: 20px;
+}
+.MENU a{
+    text-decoration: none;
+    color: green;
+}
+.MENU div{
+    margin-top: 10px;
+}
+.MENU{
+    background-color: #f5f5f5;
+    width: 300px;
+    height: 400px;
+    text-align: center;
+    padding-top: 70px;
+    font-weight: bolder;
+    border-radius: 20px;
+}
+/*Footer*/
+.FOOTER{
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bolder;
+}
+.about{
+    text-decoration: none;
+}
+@media (max-width:600px){
+    .MENU{
+        margin-top: 30px;
+    }
+    .HERO{
+        height: 870px;
+    }
+    .FOOTER{
+        flex-wrap: wrap;
+        height: 100px;
+    }
+}
