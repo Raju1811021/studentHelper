@@ -15,3 +15,11 @@ class UserDataForm(forms.ModelForm):
         if length!=10:
             raise forms.ValidationError("Mobile Number should be 10 digits, Please Entered Correct Mobile No.")
         return value
+
+#Notes Containig form
+class NotesSubmission(forms.ModelForm):
+    class Meta:
+        model=models.Notes
+        fields=['subject','notes_pdf']
+        labels={'subject':'Subject','notes_pdf':'NotesPDF'}
+        

@@ -3,7 +3,8 @@ from sre_constants import SUCCESS
 from django.shortcuts import render
 from helper import forms,models
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 # Home page
@@ -42,4 +43,42 @@ def UserRegister(request):
     else:
         return render(request,'helper/UserRegistration.html',{'UserForm':form,'username':request.POST['username']})
 
-    
+# userLoginForm
+def UserLogin(request):
+    if request.method=='GET':
+        form=AuthenticationForm()
+        return render(request,'helper/loginForm.html',{'form':form})
+    else:
+        form=AuthenticationForm(request=request,data=request.POST)
+        if form.is_valid():
+            username=request.POST['username']
+            password=request.POST['password']
+            user=authenticate(request,username=username,password=password)
+            if user:
+                login(request,user)
+                return render(request,'helper/me.html')
+            else:
+                form=AuthenticationForm()
+                messages.warning(request,'You are not registered ,plese registered first.')
+                return render(request,'helper/loginForm.html',{'form':form})
+        else:
+            return render(request,'helper/loginForm.html',{'form':form})
+
+#USerLogout
+def UserLogout(request):
+    logout(request)
+    return render(request,'helper/home.html')
+
+#Notes 
+def shareNotes(request):
+    form=forms.NotesSubmission()
+    return render(request,'helper/shareNotes.html',{'form':form})
+def submitNotes(request):
+    form=forms.NotesSubmission(request.GET)
+    obj=models.Notes()
+    obj.subject=request.GET['subject']
+    obj.notes_pdf=request.GET['notes_pdf']
+    obj.user=request.user
+    obj.save()
+    messages.success(request,'Notes Submisson Successful , Thanks for Your Contribution.')
+    return render(request,'helper/shareNotes.html',{'form':form})
