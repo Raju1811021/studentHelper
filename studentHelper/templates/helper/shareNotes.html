@@ -29,7 +29,7 @@
         }
     }
     </style>
-    <title>StudentHelper-Login</title>
+    <title>StudentHelper-shareNotes</title>
 </head>
 <body>
     <div class="BODYCONTAINER">
@@ -45,7 +45,8 @@
             </div>
         </div>
         <div class="HERO">
-            <form action="http://localhost:8000/helper/submitNotes/" method="get">
+            <form action="http://localhost:8000/helper/submitNotes/" method="POST" enctype="multipart/form-data">
+                {%csrf_token%}
                 {{form.non_field_errors}}
                 <table class="TABLE">
                     {% for message in messages %}

@@ -8,4 +8,8 @@ urlpatterns=[
     path('userLogout/',views.UserLogout),
     path('shareNotes/',views.shareNotes),
     path('submitNotes/',views.submitNotes),
+    path('findNotes/',views.findNotes),
+    path('returnNotes/',views.returnNotes),
+    path('takeBooks/',views.TakeBooks),
+    path('saveBook/',views.SaveBook),
 ]

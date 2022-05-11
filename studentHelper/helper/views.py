@@ -1,11 +1,10 @@
 
-from sre_constants import SUCCESS
+
 from django.shortcuts import render
 from helper import forms,models
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
-from django.http import HttpResponseRedirect
 from django.contrib import messages
 # Home page
 def homePage(request):
@@ -56,7 +55,7 @@ def UserLogin(request):
             user=authenticate(request,username=username,password=password)
             if user:
                 login(request,user)
-                return render(request,'helper/me.html')
+                return render(request,'helper/me.html',{'data':username})
             else:
                 form=AuthenticationForm()
                 messages.warning(request,'You are not registered ,plese registered first.')
@@ -74,11 +73,44 @@ def shareNotes(request):
     form=forms.NotesSubmission()
     return render(request,'helper/shareNotes.html',{'form':form})
 def submitNotes(request):
-    form=forms.NotesSubmission(request.GET)
+    form=forms.NotesSubmission(request.POST,request.FILES)
     obj=models.Notes()
-    obj.subject=request.GET['subject']
-    obj.notes_pdf=request.GET['notes_pdf']
+    obj.subject=request.POST['subject']
+    obj.notes_pdf=request.FILES['notes_pdf']
     obj.user=request.user
     obj.save()
     messages.success(request,'Notes Submisson Successful , Thanks for Your Contribution.')
     return render(request,'helper/shareNotes.html',{'form':form})
+#find Notes
+def findNotes(request):
+    return render(request,'helper/findNotes.html')
+def returnNotes(request):
+    Subject=request.GET['subject']
+    ans=models.Notes.objects.filter(subject=Subject)
+    if len(ans)==0:
+        messages.success(request,'OOps ! Notes are not Available.')
+    return render(request,'helper/findNotes.html',{'ans':ans})
+
+#sell books
+def TakeBooks(request):
+    form=forms.BookForm()
+    img=models.Books.objects.filter(user__username=request.user.username)
+    if len(img)==0:
+        img=None
+    return render(request,'helper/me.html',{'form':form,'img':img,'data':request.user.username})
+def SaveBook(request):
+    form=forms.BookForm(request.POST,request.FILES)
+    if form.is_valid:
+        obj=models.Books()
+        obj.book_name=request.POST['book_name']
+        obj.book_img=request.FILES['book_img']
+        obj.author=request.POST['author']
+        obj.price=request.POST['price']
+        obj.edition=request.POST['edition']
+        obj.user=request.user
+        obj.save()
+    img=models.Books.objects.filter(user__username=request.user.username)
+    if len(img)==0:
+        img=None
+    messages.success(request,'Book Detail Submitted Successfully!')
+    return render(request,'helper/me.html',{'form':form,'img':img,'data':request.user.username})

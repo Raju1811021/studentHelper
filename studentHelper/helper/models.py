@@ -21,3 +21,14 @@ class Notes(models.Model):
     subject=models.CharField(max_length=100)
     def __str__(self):
         return self.subject
+
+# Containing Books
+class Books(models.Model):
+    user=models.ForeignKey(User,on_delete=models.PROTECT)
+    book_name=models.CharField(max_length=100,null=False)
+    book_img=models.ImageField()
+    author=models.CharField(max_length=100,null=False)
+    price=models.CharField(max_length=6,null=False)
+    edition=models.DateField()
+    def __str__(self):
+        return self.book_name

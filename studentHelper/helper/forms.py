@@ -1,4 +1,5 @@
 
+from datetime import date
 from helper import models
 from django import forms
 
@@ -22,4 +23,10 @@ class NotesSubmission(forms.ModelForm):
         model=models.Notes
         fields=['subject','notes_pdf']
         labels={'subject':'Subject','notes_pdf':'NotesPDF'}
-        
+# form containing Book
+class BookForm(forms.ModelForm):
+    class Meta:
+        model=models.Books
+        fields=['book_name','book_img','author','price','edition']
+        labels={'book_name':'Book Name','book_img':'Book Img','authot':'Author','price':'Price','edition':'Edition'}
+        widgets={'edition':forms.TextInput(attrs={'placeholder':'yyyy-mm-dd','type':'date'})}

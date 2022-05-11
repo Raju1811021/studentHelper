@@ -1,0 +1,61 @@
+.HERO{
+    justify-content: left;
+    align-items: unset;
+}
+.MENU{
+    border-radius: 0px;
+    text-align: left;
+    padding-left: 40px;
+    background-color: transparent;
+    padding-top: 20px;
+}
+.MENU i,span{
+    font-size: 20px;
+}
+.HERO{
+    justify-content: space-between;
+    height: unset;
+}
+.bookform{
+    margin-right: 50px;
+}
+.HERO form {
+    width: 440px;
+    height: 376px;
+    background-color: transparent;
+}
+.HERO form table th{
+    text-align: center;
+}
+.HERO form table{
+    height: 330px;
+}
+.IMAGE{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.IMAGE figure{
+    margin-left: 30px;
+    
+}
+.figure-caption{
+    color: navy;
+}
+@media (max-width:795px){
+    .HERO{
+        justify-content: center;
+    }
+}
+@media (max-width:500px){
+    .HERO form{
+        width: 260px;
+        margin-top: -100px;
+    }
+    .HERO form table{
+        width: 260px;
+    }
+    .HERO form table input{
+        width: 136px;
+    }
+}
