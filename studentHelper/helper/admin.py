@@ -5,3 +5,4 @@ from helper import models
 admin.site.register(models.UserData)
 admin.site.register(models.Notes)
 admin.site.register(models.Books)
+admin.site.register(models.order_detail)

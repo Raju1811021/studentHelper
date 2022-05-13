@@ -12,4 +12,9 @@ urlpatterns=[
     path('returnNotes/',views.returnNotes),
     path('takeBooks/',views.TakeBooks),
     path('saveBook/',views.SaveBook),
+    path('showBooks/',views.showAllBooks),
+    path('searchBooks/',views.SearchBooks),
+    path('sellerInfo/',views.BookSellerInfo),
+    path('BuyerInfo/',views.showBuyerInfo),
+    path('SaveOrderDetails/',views.SaveOrderDetails),
 ]

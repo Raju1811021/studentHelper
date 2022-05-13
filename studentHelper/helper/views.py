@@ -1,8 +1,10 @@
 
-
+import datetime
 from django.shortcuts import render
+from django.http import HttpResponse
 from helper import forms,models
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
@@ -114,3 +116,38 @@ def SaveBook(request):
         img=None
     messages.success(request,'Book Detail Submitted Successfully!')
     return render(request,'helper/me.html',{'form':form,'img':img,'data':request.user.username})
+
+#Buy Books
+def showAllBooks(request):
+    books=models.Books.objects.all()
+    form=forms.SearchForm()
+    return render(request,'helper/showBooks.html',{'books':books,'form':form})
+# search Books
+def SearchBooks(request):
+    books=models.Books.objects.filter(book_name=request.GET['data'])
+    form=forms.SearchForm(request.GET)
+    return render(request,'helper/showBooks.html',{'books':books,'form':form})
+
+#Buying  Process1
+def BookSellerInfo(request):
+    bookInfo=models.Books.objects.get(id=request.GET['id'])
+    sellerInfo=models.UserData.objects.get(pk=bookInfo.user_id)
+    return render(request,'helper/Byer.html',{'book':bookInfo,'seller':sellerInfo})
+#Buying Proccess2
+@login_required(login_url='http://localhost:8000/helper/userLogin')
+def showBuyerInfo(request):
+    book_id=request.GET['book_id']
+    userData=models.UserData.objects.get(user__id=request.user.id)
+    return render(request,'helper/byerAddress.html',{'book_id':book_id,'userData':userData})
+def SaveOrderDetails(request):
+    seller_id=models.Books.objects.get(id=request.GET['book_id'])
+    data=models.order_detail()
+    data.Book_id=request.GET['book_id']
+    data.Buyer_id=request.user.id
+    data.seller_id=seller_id.user_id
+    data.quantity=1
+    data.date=datetime.datetime.now().date()
+    data.delivery_address=request.GET['address']
+    data.payment_status='Pending'
+    data.save()
+    return HttpResponse("<h1>Order Completion Succeeful</h1>")

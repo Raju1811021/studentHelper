@@ -32,3 +32,16 @@ class Books(models.Model):
     edition=models.DateField()
     def __str__(self):
         return self.book_name
+
+#Book Order Details
+class order_detail(models.Model):
+    order_no=models.AutoField(primary_key=True)
+    Book_id=models.CharField(max_length=100,unique=True)
+    Buyer_id=models.CharField(max_length=100)
+    seller_id=models.CharField(max_length=100)
+    date=models.DateField()
+    quantity=models.CharField(max_length=10)
+    delivery_address=models.CharField(max_length=1000)
+    payment_status=models.CharField(max_length=10)
+    def __str__(self):
+        return self.Book_id

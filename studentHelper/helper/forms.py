@@ -1,5 +1,6 @@
 
 from datetime import date
+from logging import PlaceHolder
 from helper import models
 from django import forms
 
@@ -30,3 +31,8 @@ class BookForm(forms.ModelForm):
         fields=['book_name','book_img','author','price','edition']
         labels={'book_name':'Book Name','book_img':'Book Img','authot':'Author','price':'Price','edition':'Edition'}
         widgets={'edition':forms.TextInput(attrs={'placeholder':'yyyy-mm-dd','type':'date'})}
+
+#search books
+class SearchForm(forms.Form):
+    data=forms.CharField(max_length=100,widget=forms.TextInput(attrs={'placeholder':'Search Books'}))
+
