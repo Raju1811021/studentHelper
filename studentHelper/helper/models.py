@@ -45,3 +45,5 @@ class order_detail(models.Model):
     payment_status=models.CharField(max_length=10)
     def __str__(self):
         return self.Book_id
+
+

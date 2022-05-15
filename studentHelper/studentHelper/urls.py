@@ -19,10 +19,10 @@ from xml.etree.ElementInclude import include
 from django.urls import include
 from django.contrib import admin
 from django.urls import path
-import helper
 from helper import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.homePage),
     path('helper/',include('helper.urls')),
+    path('chat/',include('chat.urls')),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

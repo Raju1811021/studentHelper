@@ -150,4 +150,5 @@ def SaveOrderDetails(request):
     data.delivery_address=request.GET['address']
     data.payment_status='Pending'
     data.save()
-    return HttpResponse("<h1>Order Completion Succeeful</h1>")
+    messages.success(request,f'Your Order is successfully placed , This is Cash On Delivery Facilaties , Books would be delivered Soon on Following Address.')
+    return render(request,'helper/orderConfirm.html',{'address':request.GET['address']})

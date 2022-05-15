@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/home.css'%}">
+    <link rel="stylesheet" href="{% static 'css/UserRegistration.css' %}">
+    <title>StudentHelper-ask</title>
+    <style>
+        .MENU form{
+            height: unset;
+            margin-left: -22px;
+            width: unset;
+            background-color: transparent;
+        }
+        form span{
+            color: red;
+        }
+        .MENU{
+            width: unset;
+            border-radius: 0px;
+            text-align: left;
+            padding-top: 10px;
+            padding-left: 10px;
+            height: 480px;
+            overflow-x: hidden;
+            overflow-y:auto;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .q{
+            color: red;   
+        }
+        .a{
+            color: blue;
+        }
+        textarea{
+            outline: none;
+            background-color: transparent;
+            border: 2px solid green;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="BODYCONTAINER">
+        <div class="NAVIGATION">
+            <div class="LOGO">
+                <span class="BOOK"><i class="bi bi-book"></i></span>&nbsp;
+                <span class="NAME">StudentHelper</span>
+            </div>
+            <div class="LOGIN">
+                <div class="HOUSE"><a href="http://localhost:8000/"><i class="bi bi-house-door"></i></a></div>
+                <div class="LOGIN_BUTTON btn btn-warning"><a href="http://localhost:8000/helper/userLogout">Logout</a></div>
+                <div class="REGISTRATION btn btn-warning"><a href="http://localhost:8000/helper/profile">Profile</a></div>
+            </div>
+        </div>
+        <div class="HERO">
+            <div class="MENU">
+               
+               <form action="http://localhost:8000/chat/submitQuest" method="get">
+                   <span>Ask :  </span><textarea required name="quest" id="qst" cols="20" rows="3"></textarea><br><br>
+                   <input class="btn btn-success" type="submit" value="Send">
+               </form>
+               {% for ms in data %}
+               <ol class="a">
+                {% for ans in ms.ans %}
+                 <li>{{ans.ans}}</li>
+                {% endfor %}
+                 </ol>
+                 <div class="a">Answers</div>
+               <div class="q">Question : {{ms.q}}</div>
+               {% endfor %}
+            </div>  
+    </div>
+    <div class="FOOTER">
+        <span>studentHelper&copy;2022</span>
+        <span><a href="" class="about">About us</a></span>
+        <div class="SOCIAL">
+            <span>Socialize&nbsp;&nbsp; </span>
+            <span><a href=""><i class="bi bi-facebook"></i></a></span>&nbsp;
+            <span><a href=""><i class="bi bi-instagram"></i></a></span>&nbsp;
+            <span><a href=""><i class="bi bi-linkedin"></i></a></span>&nbsp;
+            <span><a href=""><i class="bi bi-twitter"></i></a></span>&nbsp;
+            <span><a href=""><i class="bi bi-whatsapp"></i></a></span>&nbsp;
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
