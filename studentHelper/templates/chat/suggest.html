@@ -11,15 +11,6 @@
     <link rel="stylesheet" href="{% static 'css/UserRegistration.css' %}">
     <title>StudentHelper-ask</title>
     <style>
-        .MENU form{
-            height: unset;
-            margin-left: -22px;
-            width: unset;
-            background-color: transparent;
-        }
-        form span{
-            color: red;
-        }
         .MENU{
             width: unset;
             border-radius: 0px;
@@ -29,22 +20,11 @@
             height: 480px;
             overflow-x: hidden;
             overflow-y:auto;
-            display: flex;
-            flex-direction: column-reverse;
             background-color: transparent;
-        }
-        .q{
-            color: red;   
-        }
-        .a{
-            color: blue;
-        }
-        textarea{
-            outline: none;
-            background-color: transparent;
-            border: 2px solid green;
-        }
-        
+        }   
+        .MENU li a{
+            color: red;
+        } 
     </style>
 </head>
 <body>
@@ -62,20 +42,12 @@
         </div>
         <div class="HERO">
             <div class="MENU">
-               
-               <form action="http://localhost:8000/chat/submitQuest" method="get">
-                   <span>Ask :  </span><textarea required name="quest" id="qst" cols="20" rows="3"></textarea><br><br>
-                   <input class="btn btn-success" type="submit" value="Send">
-               </form>
-               {% for ms in data %}
-               <ol class="a">
-                {% for ans in ms.ans %}
-                 <li>{{ans.ans}}</li>
-                {% endfor %}
-                 </ol>
-                 <div class="a">Answers</div>
-               <div class="q">Question : {{ms.q}}</div>
-               {% endfor %}
+                <ul>
+                    <li>Click on question to give suggestions.</li>
+                    {% for i in q %}
+                    <li><a href="http://localhost:8000/chat/takeSuggestion?b_id={{i.ques_id}}">{{i.msg}}</a></li>
+                    {% endfor %}
+                </ul>
             </div>  
     </div>
     <div class="FOOTER">

@@ -152,3 +152,7 @@ def SaveOrderDetails(request):
     data.save()
     messages.success(request,f'Your Order is successfully placed , This is Cash On Delivery Facilaties , Books would be delivered Soon on Following Address.')
     return render(request,'helper/orderConfirm.html',{'address':request.GET['address']})
+
+def Notification(request):
+    notice=models.Notification.objects.all()
+    return render(request,'helper/notice.html',{'notice':notice})

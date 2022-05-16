@@ -46,4 +46,6 @@ class order_detail(models.Model):
     def __str__(self):
         return self.Book_id
 
-
+#contians Notifications
+class Notification(models.Model):
+    notice=models.TextField()

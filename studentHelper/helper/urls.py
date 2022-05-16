@@ -17,4 +17,5 @@ urlpatterns=[
     path('sellerInfo/',views.BookSellerInfo),
     path('BuyerInfo/',views.showBuyerInfo),
     path('SaveOrderDetails/',views.SaveOrderDetails),
+    path('notice/',views.Notification),
 ]

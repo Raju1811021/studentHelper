@@ -13,3 +13,4 @@ class answer(models.Model):
     question=models.ForeignKey(question,on_delete=models.CASCADE)
     user_id=models.IntegerField(null=True)
     ans=models.TextField()
+    
