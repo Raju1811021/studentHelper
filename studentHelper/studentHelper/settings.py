@@ -25,9 +25,9 @@ STATIC_DIR=BASE_DIR/'static'
 SECRET_KEY = 'django-insecure-p*=n$awi(9!5)m17r%^7c8%1!#$a7nxb1^ywg)vnr7atj)^+xq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = FALSE
+DEBUG = True
 
-ALLOWED_HOSTS = ['collagehelper.herokuapp.com','localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,7 +125,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[STATIC_DIR,]
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/'media'
-STATIC_ROOT=BASE_DIR/'static'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
