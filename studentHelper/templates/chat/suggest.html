@@ -35,9 +35,9 @@
                 <span class="NAME">StudentHelper</span>
             </div>
             <div class="LOGIN">
-                <div class="HOUSE"><a href="http://localhost:8000/"><i class="bi bi-house-door"></i></a></div>
-                <div class="LOGIN_BUTTON btn btn-warning"><a href="http://localhost:8000/helper/userLogout">Logout</a></div>
-                <div class="REGISTRATION btn btn-warning"><a href="http://localhost:8000/helper/profile">Profile</a></div>
+                <div class="HOUSE"><a href="/"><i class="bi bi-house-door"></i></a></div>
+                <div class="LOGIN_BUTTON btn btn-warning"><a href="/helper/userLogout">Logout</a></div>
+                <div class="REGISTRATION btn btn-warning"><a href="/helper/profile">Profile</a></div>
             </div>
         </div>
         <div class="HERO">
@@ -45,7 +45,7 @@
                 <ul>
                     <li>Click on question to give suggestions.</li>
                     {% for i in q %}
-                    <li><a href="http://localhost:8000/chat/takeSuggestion?b_id={{i.ques_id}}">{{i.msg}}</a></li>
+                    <li><a href="/chat/takeSuggestion?b_id={{i.ques_id}}">{{i.msg}}</a></li>
                     {% endfor %}
                 </ul>
             </div>  

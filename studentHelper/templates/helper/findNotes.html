@@ -61,14 +61,14 @@
                 <span class="NAME">StudentHelper</span>
             </div>
             <div class="LOGIN">
-                <div class="HOUSE"><a href="http://localhost:8000/"><i class="bi bi-house-door"></i></a></div>
-                <div class="LOGIN_BUTTON btn btn-warning"><a href="http://localhost:8000/helper/userLogin">Login</a></div>
-                <div class="REGISTRATION btn btn-warning"><a href="http://localhost:8000/helper/UserPass">Registraion</a></div>
+                <div class="HOUSE"><a href="/"><i class="bi bi-house-door"></i></a></div>
+                <div class="LOGIN_BUTTON btn btn-warning"><a href="/helper/userLogin">Login</a></div>
+                <div class="REGISTRATION btn btn-warning"><a href="/helper/UserPass">Registraion</a></div>
             </div>
         </div>
         <div class="HERO">
             <div class="MENU">
-                <form action="http://localhost:8000/helper/returnNotes/" method="get">
+                <form action="/helper/returnNotes/" method="get">
                     <table>
                         {% for message in messages%}
                         <tr class="alert alert-danger">

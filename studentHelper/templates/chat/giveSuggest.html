@@ -41,9 +41,9 @@
                 <span class="NAME">StudentHelper</span>
             </div>
             <div class="LOGIN">
-                <div class="HOUSE"><a href="http://localhost:8000/"><i class="bi bi-house-door"></i></a></div>
-                <div class="LOGIN_BUTTON btn btn-warning"><a href="http://localhost:8000/helper/userLogout">Logout</a></div>
-                <div class="REGISTRATION btn btn-warning"><a href="http://localhost:8000/helper/profile">Profile</a></div>
+                <div class="HOUSE"><a href="/"><i class="bi bi-house-door"></i></a></div>
+                <div class="LOGIN_BUTTON btn btn-warning"><a href="/helper/userLogout">Logout</a></div>
+                <div class="REGISTRATION btn btn-warning"><a href="/helper/profile">Profile</a></div>
             </div>
         </div>
         <div class="HERO">
@@ -51,10 +51,10 @@
             <div class="MENU">
                 {% for msg in messages%}
             <div class="alert alert-success">
-                {{msg}} <a href="http://localhost:8000/chat/suggest">Suggest More</a>
+                {{msg}} <a href="/chat/suggest">Suggest More</a>
             </div>
             {% endfor %}
-                <form action="http://localhost:8000/chat/submitAns" method="get">
+                <form action="/chat/submitAns" method="get">
                     <div>{{q.msg}}</div>
                     <input type="hidden" name="q_id" value="{{q.ques_id}}">
                     <textarea name="answer" id="" cols="30" rows="8"></textarea>

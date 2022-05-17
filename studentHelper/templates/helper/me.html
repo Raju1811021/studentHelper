@@ -20,40 +20,40 @@
                 <span class="NAME">StudentHelper</span>
             </div>
             <div class="LOGIN">
-                <div class="HOUSE"><a href="http://localhost:8000/"><i class="bi bi-house-door"></i></a></div>
-                <div class="LOGIN_BUTTON btn btn-warning"><a href="http://localhost:8000/helper/userLogout">Logout</a></div>
-                <div class="REGISTRATION btn btn-warning"><a href="http://localhost:8000/helper/profile">Profile</a></div>
+                <div class="HOUSE"><a href="/"><i class="bi bi-house-door"></i></a></div>
+                <div class="LOGIN_BUTTON btn btn-warning"><a href="/helper/userLogout">Logout</a></div>
+                <div class="REGISTRATION btn btn-warning"><a href="/helper/profile">Profile</a></div>
             </div>
         </div>
         <div class="HERO">
             <div class="MENU">
                 <div><span><i class="bi bi-person-circle"></i>&nbsp;{{data}}</span></div>
                 <div>Lets Do ...</div>
-                <div><a href="http://localhost:8000/helper/findNotes">Find Notes</a></div>
-                <div><a href="http://localhost:8000/helper/shareNotes">Share Notes</a></div>
-                <div><a href="http://localhost:8000/helper/takeBooks">Sell Old Books</a></div>
-                <div><a href="http://localhost:8000/helper/showBooks">Buy Old Books</a></div>
-                <div><a href="http://localhost:8000/helper/notice">News/Notification</a></div>
+                <div><a href="/helper/findNotes">Find Notes</a></div>
+                <div><a href="/helper/shareNotes">Share Notes</a></div>
+                <div><a href="/helper/takeBooks">Sell Old Books</a></div>
+                <div><a href="/helper/showBooks">Buy Old Books</a></div>
+                <div><a href="/helper/notice">News/Notification</a></div>
                 <div class="dropdown">
                     <a  href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         Chat/Message
                     </a>
                   
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <li><a class="dropdown-item" href="http://localhost:8000/chat/ask">Ask</a></li>
-                      <li><a class="dropdown-item" href="http://localhost:8000/chat/suggest">Suggest</a></li>
+                      <li><a class="dropdown-item" href="/chat/ask">Ask</a></li>
+                      <li><a class="dropdown-item" href="/chat/suggest">Suggest</a></li>
                     </ul>
                 </div>   
             </div>
             {% if form %}
             <div class="bookform">
-                <form  action="http://localhost:8000/helper/saveBook/" method="post" enctype="multipart/form-data">
+                <form  action="/helper/saveBook/" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <table>
                         
                         {%for Message in messages %}
                         <tr class="alert alert-success">
-                            <td colspan="2" >{{Message}}&nbsp;<a href="http://localhost:8000/helper/takeBooks">Add More</a></td>
+                            <td colspan="2" >{{Message}}&nbsp;<a href="/helper/takeBooks">Add More</a></td>
                         </tr>
                         {% endfor %}
                         <tr>

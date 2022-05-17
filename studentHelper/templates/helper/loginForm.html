@@ -44,13 +44,13 @@
                 <span class="NAME">StudentHelper</span>
             </div>
             <div class="LOGIN">
-                <div class="HOUSE"><a href="http://localhost:8000/"><i class="bi bi-house-door"></i></a></div>
-                <div class="LOGIN_BUTTON btn btn-warning"><a href="http://localhost:8000/helper/userLogin">Login</a></div>
-                <div class="REGISTRATION btn btn-warning"><a href="http://localhost:8000/helper/UserPass">Registraion</a></div>
+                <div class="HOUSE"><a href="/"><i class="bi bi-house-door"></i></a></div>
+                <div class="LOGIN_BUTTON btn btn-warning"><a href="/helper/userLogin">Login</a></div>
+                <div class="REGISTRATION btn btn-warning"><a href="/helper/UserPass">Registraion</a></div>
             </div>
         </div>
         <div class="HERO">
-            <form action="http://localhost:8000/helper/userLogin/" method="post">
+            <form action="/helper/userLogin/" method="post">
                 {% csrf_token %}
                 {{form.non_field_errors}}
                 <table class="TABLE">
@@ -76,7 +76,7 @@
                    {{message}}
                    {% endfor %}
                    <tr>
-                       <td colspan="2" class="reset"><a href="">Forgot / </a><a href="http://localhost:8000/helper/UserPass">SignUp</a></td>
+                       <td colspan="2" class="reset"><a href="">Forgot / </a><a href="/helper/UserPass">SignUp</a></td>
                    </tr>
                 </table>
             </form>
