@@ -134,7 +134,7 @@ def BookSellerInfo(request):
     sellerInfo=models.UserData.objects.get(pk=bookInfo.user_id)
     return render(request,'helper/Byer.html',{'book':bookInfo,'seller':sellerInfo})
 #Buying Proccess2
-@login_required(login_url='http://localhost:8000/helper/userLogin')
+@login_required(login_url='/helper/userLogin')
 def showBuyerInfo(request):
     book_id=request.GET['book_id']
     userData=models.UserData.objects.get(user__id=request.user.id)

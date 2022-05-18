@@ -64,7 +64,7 @@
         <div class="HERO">
             {% for i in books %}
             <figure class="figure">
-                <a href="/helper/sellerInfo?id={{i.id}}"><img src={{i.book_img.url}} class="figure-img img-fluid rounded" alt="..."></a>
+                <a href="/helper/sellerInfo?id={{i.id}}"><img src="{% static 'img/book.jpeg' %}" class="figure-img img-fluid rounded" alt="BOOK"></a>
                 <figcaption class="figure-caption text-left">
                     Book Name : {{i.book_name}}<br>Author : {{i.author}}<br>Edition : {{i.edition}}<br>Price : {{i.price}}
                 </figcaption>

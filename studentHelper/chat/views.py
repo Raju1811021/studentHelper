@@ -8,7 +8,7 @@ class pair:
     def __init__(self,q,ans):
         self.q=q
         self.ans=ans
-@login_required(login_url='http://localhost:8000/helper/userLogin')
+@login_required(login_url='/helper/userLogin')
 def questAns(request):
     questions=models.question.objects.filter(user=request.user)
     data=[]
@@ -18,14 +18,14 @@ def questAns(request):
         data.append(p)
     data=data[::-1]
     return render(request,'chat/ask.html',{'quest':questions,'data':data})
-@login_required(login_url='http://localhost:8000/helper/userLogin')
+@login_required(login_url='/helper/userLogin')
 def submitQuestion(request):
     q=models.question()
     q.user=request.user
     q.msg=request.GET['quest']
     q.save()
-    return HttpResponseRedirect('http://localhost:8000/chat/ask')
-@login_required(login_url='http://localhost:8000/helper/userLogin')
+    return HttpResponseRedirect('/chat/ask')
+@login_required(login_url='/helper/userLogin')
 def suggest(request):
     q=models.question.objects.all()
     return render(request,'chat/suggest.html',{'q':q})
